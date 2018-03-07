@@ -19,6 +19,7 @@ namespace BlynclightColors
         {
             base.ViewDidLoad();
             this._touchBarDelegate.ColorSelected += (_, color) => this.ColorSelector.Color = color;
+            this._touchBarDelegate.TurnOffRequested += (_, __) => BlynclightControl.TurnOffV30Light(0);
 
             BlynclightControl.FindDevices(ref this._numberOfDevices);
         }
@@ -47,6 +48,7 @@ namespace BlynclightColors
 		{
             base.ViewWillDisappear();
             this._colorChangedObserver.Dispose();
+            BlynclightControl.TurnOffV30Light(0);
 		}
 
 		private bool SupportsTouchBar() => ObjCRuntime.Class.GetHandle("NSTouchBar") != IntPtr.Zero;

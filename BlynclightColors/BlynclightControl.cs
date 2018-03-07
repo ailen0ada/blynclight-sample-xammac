@@ -12,5 +12,8 @@ namespace BlynclightColors
 
         [DllImport("__Internal")]
         public static extern int TurnOnRGBLights(byte byDeviceIndex, byte byRedLevel, byte byGreenLevel, byte byBlueLevel);
+
+        [DllImport("__Internal")]
+        public static extern int TurnOffV30Light(byte byDeviceIndex);
     }
 }
